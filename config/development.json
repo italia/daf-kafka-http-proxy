@@ -1,0 +1,14 @@
+{
+    "kafka": {
+        "zkConnect": "master:2181/kafka"
+    },
+    "logging": {
+        "stdout": {
+            "level": "debug"
+        },
+        "file": {
+            "level": "debug",
+            "enabled": false
+        }
+    }
+}
