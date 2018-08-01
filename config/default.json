@@ -1,0 +1,42 @@
+{
+    "kafka": {
+        "zkConnect": "master:2181/kafka",
+        "producerSeed": "0x9747b28c",
+        "clientId": {
+            "socket": "kafka-socket-proxy",
+            "http": "kafka-http-proxy"
+        },
+        "autocommit": {
+            "socket": true,
+            "http": false
+        }
+    },
+    "logging": {
+        "logName": "kafka-http-proxy",
+        "stdout": {
+            "level": "trace",
+            "enabled": true
+        },
+        "file": {
+            "path": "./kafka-http-proxy.log",
+            "level": "trace",
+            "enabled": false
+        }
+    },
+    "cache": {
+        "timeout": 600
+    },
+    "port": 8085,
+    "consumer": {
+        "timeoutMs": 300000,
+        "autoCommitEnable": "true",
+        "requestMaxMessages": 100
+    },
+    "health": {
+        "okResponseText": "UP"
+    },
+    "http": {
+        "jsonContentType": "application/*+json",
+        "requestEntityLimit": "16mb"
+    }
+}
