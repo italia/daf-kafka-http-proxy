@@ -24,6 +24,8 @@ spec:
       labels:
         app: kafka-http-proxy
     spec:
+      imagePullSecrets:
+        - name: regsecret
       containers:
       - name: kafka-http-proxy
         image: nexus.teamdigitale.test/kafka-http-proxy:1.0.0
