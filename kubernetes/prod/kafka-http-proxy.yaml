@@ -1,0 +1,36 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-http-proxy
+  labels:
+    app: kafka-http-proxy
+spec:
+  ports:
+  - port: 8085
+  selector:
+    app: kafka-http-proxy
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kafka-http-proxy-deployment
+spec:
+  replicas: 1
+  strategy:
+      type: Recreate
+  template:
+    metadata:
+      labels:
+        app: kafka-http-proxy
+    spec:
+      containers:
+      - name: kafka-http-proxy
+        image: nexus.daf.teamdigitale.it/kafka-http-proxy:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: client
+          containerPort: 8085
+        securityContext:
+          privileged: true
+          runAsUser: 0
