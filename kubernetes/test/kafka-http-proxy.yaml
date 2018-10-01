@@ -36,3 +36,9 @@ spec:
         securityContext:
           privileged: true
           runAsUser: 0
+        env:
+          - name: ZOOKEEPER_CONNECT
+            valueFrom:
+              configMapKeyRef:
+                name: kafka-consumer-conf
+                key: kafkaUrl
